@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [20, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
+
+      # The loop end-to-end: scripted maker claims "done", the check disagrees,
+      # the loop keeps going until the tests are green, then commits (no push).
+      - name: demo smoke test
+        run: node dist/cli.js demo --dir "${{ runner.temp }}/ratchet-demo-smoke"
+        shell: bash
+
+      - name: assert the demo state recorded the rejected "done" claim
+        run: |
+          node -e "
+            const s = require(process.argv[1]);
+            const ok = s.status === 'passed'
+              && s.attempts[0].claimedDone === true
+              && s.attempts[0].check.passed === false
+              && s.attempts.at(-1).check.passed === true
+              && s.attempts.at(-1).commit;
+            if (!ok) { console.error('demo state did not capture the stop-hook moment:', JSON.stringify(s, null, 2)); process.exit(1); }
+            console.log('stop-hook moment captured on disk: model said done, check disagreed, loop continued.');
+          " "${{ runner.temp }}/ratchet-demo-smoke/.ratchet/state.json"
+        shell: bash

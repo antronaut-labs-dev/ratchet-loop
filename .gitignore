@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+.env
+.DS_Store
+*.log
+*.tsbuildinfo
+.ratchet/
+ratchet-demo/
+
+# local tool & editor state — never commit
+.claude/
+.vscode/
+.idea/
+*.swp
+
+# OS cruft
+Thumbs.db
+Desktop.ini

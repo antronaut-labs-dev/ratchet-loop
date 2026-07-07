@@ -1,0 +1,55 @@
+name: Bug report
+description: Something behaved differently than documented
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! A minimal reproduction turns a "we'll look into it"
+        into a fix. For loop-behavior bugs, `.ratchet/state.json` is usually the
+        best evidence — paste it (redact anything sensitive in `evidence`).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what happened instead?
+      placeholder: |
+        I ran a loop with `git: { worktree: true }` on Windows and expected …
+        but got …
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: The smallest `createLoop` config or CLI command that shows the bug.
+      render: ts
+      placeholder: |
+        const result = await createLoop({
+          goal: '…',
+          generate: async () => ({ summary: '…' }),
+          check: shellCheck('npm test'),
+          maxAttempts: 3,
+        }).run();
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output / state
+      description: Terminal output, the thrown error, and/or `.ratchet/state.json`.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: ratchet-loop version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Node version & OS
+      placeholder: node 20.19 · windows 11 / ubuntu 24.04
+    validations:
+      required: true

@@ -1,0 +1,41 @@
+name: Feature request
+description: Propose an addition or a change
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Quick compass before you write: the core is a bare loop engine.
+        If the feature encodes *how a specific product or stack generates or
+        verifies code* (prompts, providers, validators), it belongs in an
+        adapter under `/examples` — and proposals for new example adapters
+        are very welcome here too.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation where today's ratchet-loop falls short.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or behavior
+      description: What would it look like to use? Sketch the config/option/function.
+      render: ts
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where do you think it belongs?
+      options:
+        - core engine (src/)
+        - an example adapter (/examples)
+        - docs
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Including "do it in my own generate/check/apply" — and why that wasn't enough.

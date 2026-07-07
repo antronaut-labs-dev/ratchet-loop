@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions, ideas, show & tell
+    url: https://github.com/antronaut-labs-dev/ratchet-loop/discussions
+    about: Usage help, design questions, and anything that isn't a concrete bug or feature.
+  - name: Security reports (private)
+    url: https://github.com/antronaut-labs-dev/ratchet-loop/security/advisories/new
+    about: Please never file vulnerabilities as public issues — see SECURITY.md.

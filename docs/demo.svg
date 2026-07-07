@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="13">
+  <!-- Animates in any browser (GitHub renders README images via <img>, where CSS
+       animation runs). Where styles or motion are unavailable — reduced-motion
+       users, style-stripping renderers — it degrades to the full static frame. -->
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .line { opacity: 0; }
+      @keyframes l1 { 0%, 2.8% { opacity: 0 } 2.9%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l2 { 0%, 9.9% { opacity: 0 } 10%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l3 { 0%, 18.5% { opacity: 0 } 18.6%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l4 { 0%, 28.5% { opacity: 0 } 28.6%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l5 { 0%, 41.3% { opacity: 0 } 41.4%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l6 { 0%, 49.9% { opacity: 0 } 50%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l7 { 0%, 61.3% { opacity: 0 } 61.4%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l8 { 0%, 69.9% { opacity: 0 } 70%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      @keyframes l9 { 0%, 79.9% { opacity: 0 } 80%, 96% { opacity: 1 } 100% { opacity: 0 } }
+      .l1 { animation: l1 14s linear infinite }
+      .l2 { animation: l2 14s linear infinite }
+      .l3 { animation: l3 14s linear infinite }
+      .l4 { animation: l4 14s linear infinite }
+      .l5 { animation: l5 14s linear infinite }
+      .l6 { animation: l6 14s linear infinite }
+      .l7 { animation: l7 14s linear infinite }
+      .l8 { animation: l8 14s linear infinite }
+      .l9 { animation: l9 14s linear infinite }
+    }
+  </style>
+
+  <rect width="800" height="330" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <circle cx="26" cy="24" r="6" fill="#ff5f57"/>
+  <circle cx="46" cy="24" r="6" fill="#febc2e"/>
+  <circle cx="66" cy="24" r="6" fill="#28c840"/>
+  <text x="400" y="28" text-anchor="middle" fill="#8b949e" font-size="12">ratchet-loop</text>
+
+  <text class="line l1" x="28" y="66" fill="#e6edf3"><tspan fill="#8b949e">$</tspan> npx ratchet-loop demo</text>
+
+  <text class="line l2" x="28" y="98" fill="#e6edf3" font-weight="bold"><tspan fill="#bc8cff">◆</tspan> goal: make `node --test` pass in the demo repo</text>
+
+  <text class="line l3" x="28" y="124" fill="#e6edf3">├─ attempt 1/5  <tspan fill="#39c5cf">✎</tspan> reviewed the helpers — everything already looks correct <tspan fill="#d29922">(claims done)</tspan></text>
+
+  <text class="line l4" x="28" y="150" fill="#e6edf3">│   ⤷ check: node --test  <tspan fill="#f85149">✗ 2 failing</tspan>   <tspan fill="#d29922" font-weight="bold">← model said "done"; check disagreed</tspan></text>
+
+  <text class="line l5" x="28" y="176" fill="#e6edf3">├─ attempt 2/5  <tspan fill="#39c5cf">✎</tspan> fix add(): use + instead of -</text>
+
+  <text class="line l6" x="28" y="202" fill="#e6edf3">│   ⤷ check: node --test  <tspan fill="#f85149">✗ 1 failing</tspan></text>
+
+  <text class="line l7" x="28" y="228" fill="#e6edf3">├─ attempt 3/5  <tspan fill="#39c5cf">✎</tspan> clamp(): bound the top end with Math.min</text>
+
+  <text class="line l8" x="28" y="254" fill="#e6edf3">│   ⤷ check: node --test  <tspan fill="#3fb950">✓ 4 passing</tspan></text>
+
+  <text class="line l9" x="28" y="286" fill="#e6edf3">╰─ <tspan fill="#3fb950" font-weight="bold">✓ goal met in 3 attempts</tspan> · committed d7a0ff7 (ratchet/demo, <tspan font-weight="bold">no push</tspan>)</text>
+</svg>

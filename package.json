@@ -1,0 +1,85 @@
+{
+  "name": "ratchet-loop",
+  "version": "0.1.0",
+  "description": "The agent loop that doesn't trust \"I'm done.\" Runs any model against a real check — tests, types, build — and only stops when the check passes.",
+  "keywords": [
+    "agent",
+    "ai",
+    "llm",
+    "loop",
+    "verification",
+    "harness",
+    "codegen",
+    "tdd",
+    "autonomous",
+    "check",
+    "ratchet"
+  ],
+  "license": "MIT",
+  "author": "Antronaut Labs <antronautlabs@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antronaut-labs-dev/ratchet-loop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antronaut-labs-dev/ratchet-loop/issues"
+  },
+  "homepage": "https://github.com/antronaut-labs-dev/ratchet-loop#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "ratchet-loop": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "demo": "npm run build && node dist/cli.js demo --force",
+    "ci": "npm run build && npm run typecheck && npm run lint && npm run format:check && npm run test",
+    "prepublishOnly": "npm run ci"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
+    "@eslint/js": "^9.30.0",
+    "@types/node": "^20.19.0",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.0",
+    "prettier": "^3.6.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.23.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.35.0",
+    "vitest": "^3.2.0"
+  }
+}
