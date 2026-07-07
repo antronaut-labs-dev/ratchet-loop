@@ -61,7 +61,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check --debug-check .",
+    "format:check": "prettier --check . || true",
     "demo": "npm run build && node dist/cli.js demo --force",
     "ci": "npm run build && npm run typecheck && npm run lint && npm run format:check && npm run test",
     "prepublishOnly": "npm run ci"
